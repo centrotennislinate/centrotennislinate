@@ -57,7 +57,7 @@
 
   .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:120px;padding-bottom:60px;overflow:hidden;}
   .hero-bg{position:absolute;inset:0;z-index:0;background-image:url('foto4.jpg');background-size:cover;background-position:center 40%;}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to left,rgba(254,255,241,.88) 35%,rgba(254,255,241,.5) 65%,rgba(254,255,241,.1) 100%);}
+  .hero-bg::after{content:"";position:absolute;inset:0;    background:linear-gradient(to right, rgba(254,255,241,.97) 45%, rgba(254,255,241,.6) 75%, rgba(254,255,241,.2) 100%);}
   .court-lines{position:absolute;right:-6%;top:50%;transform:translateY(-50%);width:min(54vw,720px);aspect-ratio:1/1.5;opacity:.12;pointer-events:none;}
   .hero-grid{position:relative;z-index:2;width:100%;}
   .hero-eyebrow{margin-bottom:34px;}
@@ -233,9 +233,10 @@
   </div>
 </section>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;height:clamp(220px,30vw,420px);overflow:hidden;">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:clamp(220px,30vw,420px);overflow:hidden;">
   <div style="background-image:url('foto3.jpg');background-size:cover;background-position:center;"></div>
   <div style="background-image:url('foto1.jpg');background-size:cover;background-position:center 40%;"></div>
+  <div style="background-image:url('foto4.jpg');background-size:cover;background-position:center 30%;"></div>
 </div>
 
 <section id="centro">
