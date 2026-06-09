@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro Tennis Linate — Italian Tennis Experience</title>
+<meta name="description" content="Centro Tennis Linate. Quattro campi outdoor in terra rossa a Milano. Affitto campi, lezioni, corsi e clinic. Un'esperienza tennistica premium, riservata e autenticamente italiana.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Centro Tennis Linate — Italian Tennis Experience">
+<meta property="og:description" content="Quattro campi outdoor in terra rossa a Milano. Un'esperienza tennistica premium e riservata.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://centrotennislinate.it">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --clay:        #800000;   /* terra rossa */
+    --clay-soft:   #9a3a2a;   /* terra rossa schiarita per profondità */
+    --cream:       #fefff1;   /* bianco caldo */
+    --cream-deep:  #f4f1e2;   /* crema leggermente più calda per sezioni */
+    --ink:         #0a0a0a;   /* nero */
+    --ink-soft:    #2b2622;   /* testo corpo, meno duro del nero */
+    --fluo:        #ffff00;   /* giallo fluo, solo come firma */
+    --line:        rgba(10,10,10,.14);
+
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --script: "Pinyon Script", cursive;
+    --sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+
+    --maxw: 1240px;
+    --pad: clamp(22px, 5vw, 80px);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+
+  body{
+    background:var(--cream);
+    color:var(--ink-soft);
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:17px;
+    line-height:1.7;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--clay); color:var(--cream); }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
+
+  /* utility eyebrow */
+  .eyebrow{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:12px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--clay);
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:34px; height:1px;
+    background:var(--clay);
+    display:inline-block;
+  }
+  .eyebrow.center{ justify-content:center; }
+  .eyebrow.center::after{
+    content:""; width:34px; height:1px; background:var(--clay); display:inline-block;
+  }
+
+  /* ============ NAV ============ */
+  header.nav{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    padding:22px 0;
+    transition:background .5s ease, padding .5s ease, box-shadow .5s ease;
+  }
+  header.nav.scrolled{
+    background:var(--cream);
+    padding:14px 0;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:14px;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .brand small{ display:block; font-size:9px; letter-spacing:.34em; color:var(--clay); margin-top:3px; }
+
+  .nav-links{ display:flex; align-items:center; gap:38px; }
+  .nav-links a.link{
+    font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-soft);
+    position:relative; padding:4px 0;
+  }
+  .nav-links a.link::after{
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--clay);
+    transition:width .4s ease;
+  }
+  .nav-links a.link:hover::after{ width:100%; }
+
+  .btn{
+    font-family:var(--sans); font-weight:400; font-size:12.5px; letter-spacing:.24em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:12px; cursor:pointer; border:none;
+    transition:transform .35s ease, background .35s ease, color .35s ease, border-color .35s ease;
+  }
+  .btn-primary{
+    background:var(--clay); color:var(--cream);
+    padding:15px 30px; border:1px solid var(--clay);
+    position:relative; overflow:hidden;
+  }
+  .btn-primary span{ position:relative; z-index:1; }
+  .btn-primary::before{
+    content:""; position:absolute; inset:0; background:var(--ink); transform:translateY(101%);
+    transition:transform .4s cubic-bezier(.6,0,.2,1);
+  }
+  .btn-primary:hover::before{ transform:translateY(0); }
+  .btn-ghost{
+    background:transparent; color:var(--ink); padding:14px 28px; border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--clay); color:var(--clay); }
+
+  /* hamburger */
+  .burger{ display:none; flex-direction:column; gap:6px; background:none; border:none; cursor:pointer; padding:6px; }
+  .burger span{ width:26px; height:1.5px; background:var(--ink); transition:.35s; }
+  .burger.open span:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:center;
+    padding-top:120px; padding-bottom:60px;
+    background:
+      radial-gradient(120% 90% at 78% 10%, rgba(128,0,0,.10), transparent 55%),
+      var(--cream);
+    overflow:hidden;
+  }
+  /* sottili linee di campo da tennis come motivo firma */
+  .court-lines{
+    position:absolute; right:-6%; top:50%; transform:translateY(-50%);
+    width:min(54vw, 720px); aspect-ratio:1/1.5; opacity:.12; pointer-events:none;
+  }
+  .hero-grid{ position:relative; z-index:2; width:100%; }
+  .hero-eyebrow{ margin-bottom:34px; }
+  .hero h1{
+    font-family:var(--serif); color:var(--ink);
+    font-weight:500; line-height:.96; letter-spacing:-.01em;
+  }
+  .hero h1 .script{
+    display:block; font-family:var(--script); color:var(--clay);
+    font-size:clamp(54px, 11vw, 150px); font-weight:400; line-height:.8;
+    margin-bottom:6px;
+  }
+  .hero h1 .line2{
+    display:block; font-size:clamp(40px, 9.4vw, 124px); text-transform:uppercase;
+    letter-spacing:.01em;
+  }
+  /* firma giallo fluo: hairline sotto la parola chiave */
+  .hero h1 .underline{ position:relative; display:inline-block; }
+  .hero h1 .underline::after{
+    content:""; position:absolute; left:0; right:0; bottom:.1em; height:5px;
+    background:var(--fluo); z-index:-1; opacity:.9;
+  }
+  .hero p.lead{
+    max-width:46ch; margin:34px 0 44px; font-size:clamp(16px,1.6vw,19px);
+    color:var(--ink-soft); font-weight:300;
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+
+  .scroll-hint{
+    position:absolute; left:var(--pad); bottom:30px; z-index:2;
+    font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--clay);
+    display:flex; align-items:center; gap:12px;
+  }
+  .scroll-hint .dot{ width:1px; height:42px; background:var(--clay); position:relative; overflow:hidden; }
+  .scroll-hint .dot::after{
+    content:""; position:absolute; left:0; top:-100%; width:1px; height:100%; background:var(--cream);
+    animation:scrolldot 2.4s infinite;
+  }
+  @keyframes scrolldot{ 0%{top:-100%} 60%{top:100%} 100%{top:100%} }
+
+  /* ============ SECTIONS ============ */
+  section{ padding:clamp(90px,12vw,160px) 0; position:relative; }
+
+  .section-head{ max-width:660px; margin-bottom:clamp(48px,7vw,80px); }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .section-head h2{
+    font-family:var(--serif); font-weight:500; color:var(--ink);
+    font-size:clamp(34px,5.2vw,68px); line-height:1.04; letter-spacing:-.01em;
+    margin-top:24px;
+  }
+  .section-head h2 em{ font-family:var(--script); font-style:normal; color:var(--clay); font-weight:400; }
+  .section-head p{ margin-top:22px; font-size:17px; color:var(--ink-soft); max-width:54ch; }
+  .section-head.center p{ margin-left:auto; margin-right:auto; }
+
+  /* SERVIZI */
+  #servizi{ background:var(--cream-deep); }
+  .services{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); }
+  .service{
+    padding:46px 38px 46px 0; border-right:1px solid var(--line);
+    display:flex; flex-direction:column; min-height:340px;
+    transition:background .4s ease;
+  }
+  .service:last-child{ border-right:none; padding-right:0; }
+  .service:not(:first-child){ padding-left:38px; }
+  .service .num{
+    font-family:var(--serif); font-style:italic; font-size:18px; color:var(--clay); margin-bottom:auto;
+  }
+  .service h3{
+    font-family:var(--serif); font-weight:500; font-size:clamp(24px,3vw,32px); color:var(--ink);
+    line-height:1.1; margin:30px 0 14px;
+  }
+  .service p{ font-size:15.5px; color:var(--ink-soft); font-weight:300; }
+  .service .svc-cta{
+    margin-top:26px; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--clay);
+    display:inline-flex; align-items:center; gap:10px; align-self:flex-start;
+  }
+  .service .svc-cta .arrow{ transition:transform .35s ease; }
+  .service .svc-cta:hover .arrow{ transform:translateX(7px); }
+
+  /* IL CENTRO */
+  #centro{ background:var(--clay); color:var(--cream); }
+  #centro .eyebrow{ color:var(--fluo); }
+  #centro .eyebrow::before, #centro .eyebrow.center::after{ background:var(--fluo); }
+  #centro .section-head h2{ color:var(--cream); }
+  #centro .section-head h2 em{ color:var(--cream); }
+  #centro .section-head p{ color:rgba(254,255,241,.8); }
+  .centro-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(40px,6vw,90px); align-items:center; }
+  .centro-figure{
+    position:relative; aspect-ratio:4/5; background:
+      repeating-linear-gradient(0deg, rgba(254,255,241,.08) 0 1px, transparent 1px 64px),
+      linear-gradient(160deg, var(--clay-soft), #5e0000);
+    border:1px solid rgba(254,255,241,.18);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  /* sostituisci lo sfondo qui sotto con una tua foto: background-image:url('foto-campo.jpg'); */
+  .centro-figure .court-svg{ width:64%; opacity:.5; }
+  .centro-figure .badge{
+    position:absolute; bottom:0; left:0; background:var(--cream); color:var(--clay);
+    padding:14px 22px; font-family:var(--serif); font-style:italic; font-size:18px;
+  }
+  .centro-stats{ list-style:none; }
+  .centro-stats li{
+    display:flex; align-items:baseline; gap:24px; padding:26px 0;
+    border-bottom:1px solid rgba(254,255,241,.18);
+  }
+  .centro-stats li:first-child{ border-top:1px solid rgba(254,255,241,.18); }
+  .centro-stats .figure{
+    font-family:var(--serif); font-size:clamp(40px,5vw,64px); font-weight:500; color:var(--cream);
+    line-height:1; min-width:1.4em;
+  }
+  .centro-stats .label{ font-size:14px; color:rgba(254,255,241,.82); font-weight:300; }
+  .centro-stats .label strong{ color:var(--cream); font-weight:400; display:block; font-size:16px; margin-bottom:3px; letter-spacing:.04em; }
+
+  /* CONTATTI */
+  #contatti{ background:var(--cream); }
+  .contact-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(40px,6vw,90px); align-items:start; }
+  .contact-info dl{ margin-top:10px; }
+  .contact-info .row{ padding:22px 0; border-bottom:1px solid var(--line); }
+  .contact-info .row:first-child{ border-top:1px solid var(--line); }
+  .contact-info dt{ font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--clay); margin-bottom:8px; }
+  .contact-info dd{ font-family:var(--serif); font-size:21px; color:var(--ink); }
+  .contact-info dd a{ transition:color .3s ease; }
+  .contact-info dd a:hover{ color:var(--clay); }
+
+  form .field{ position:relative; margin-bottom:30px; }
+  form label{
+    position:absolute; left:0; top:14px; font-size:15px; color:var(--ink-soft); pointer-events:none;
+    transition:.3s ease; font-weight:300;
+  }
+  form input, form textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
+    padding:14px 0; font-family:var(--sans); font-size:16px; font-weight:300; color:var(--ink);
+    transition:border-color .3s ease;
+  }
+  form textarea{ resize:vertical; min-height:80px; }
+  form input:focus, form textarea:focus{ outline:none; border-bottom-color:var(--clay); }
+  form input:focus + label, form textarea:focus + label,
+  form input:not(:placeholder-shown) + label, form textarea:not(:placeholder-shown) + label{
+    top:-12px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--clay);
+  }
+  form .form-note{ font-size:13px; color:var(--ink-soft); margin-top:6px; }
+  .form-msg{ margin-top:18px; font-size:14px; color:var(--clay); min-height:20px; }
+
+  /* ============ FOOTER ============ */
+  footer{ background:var(--ink); color:var(--cream); padding:clamp(70px,9vw,110px) 0 36px; }
+  .foot-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; align-items:flex-end; padding-bottom:60px; border-bottom:1px solid rgba(254,255,241,.16); }
+  .foot-brand{ font-family:var(--serif); font-size:clamp(34px,5vw,60px); line-height:1; color:var(--cream); }
+  .foot-brand .script{ font-family:var(--script); color:var(--fluo); display:block; font-size:clamp(30px,4vw,46px); font-weight:400; }
+  .foot-contacts{ display:flex; flex-direction:column; gap:14px; text-align:right; }
+  .foot-contacts a{ font-size:15px; letter-spacing:.02em; color:rgba(254,255,241,.85); transition:color .3s; }
+  .foot-contacts a:hover{ color:var(--fluo); }
+  .foot-bottom{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; padding-top:30px; font-size:12px; letter-spacing:.06em; color:rgba(254,255,241,.55); }
+  .foot-bottom a:hover{ color:var(--fluo); }
+
+  /* ============ REVEAL ANIMATION ============ */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity 1s cubic-bezier(.2,.6,.2,1), transform 1s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.08s; }
+  .reveal.d2{ transition-delay:.16s; }
+  .reveal.d3{ transition-delay:.24s; }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:980px){
+    .services{ grid-template-columns:1fr; }
+    .service{ border-right:none; border-bottom:1px solid var(--line); padding:36px 0; min-height:auto; }
+    .service:not(:first-child){ padding-left:0; }
+    .service:last-child{ border-bottom:none; }
+    .service .num{ margin-bottom:14px; }
+    .centro-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:min(82vw,360px);
+      background:var(--cream); flex-direction:column; align-items:flex-start; justify-content:center;
+      gap:30px; padding:0 var(--pad); transform:translateX(105%); transition:transform .5s cubic-bezier(.6,0,.2,1);
+      box-shadow:-20px 0 60px rgba(0,0,0,.12);
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-links a.link{ font-size:15px; }
+    .nav-links .btn-primary{ width:100%; justify-content:center; padding:16px; }
+    .burger{ display:flex; z-index:60; }
+    .court-lines{ opacity:.07; right:-30%; }
+    .foot-top{ flex-direction:column; align-items:flex-start; }
+    .foot-contacts{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Centro Tennis Linate<small>Milano</small></a>
+    <nav class="nav-links" id="menu">
+      <a href="#servizi" class="link">Servizi</a>
+      <a href="#centro" class="link">Il Centro</a>
+      <a href="#contatti" class="link">Contatti</a>
+      <a href="https://playtomic.io/tenant/24a04f0e-7926-44e9-9a2d-16b7f7175172?utm_source=app_ios&utm_campaign=share" target="_blank" rel="noopener" class="btn btn-primary"><span>Prenota ora</span></a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <!-- motivo: linee di campo -->
+  <svg class="court-lines" viewBox="0 0 200 300" fill="none" stroke="#800000" stroke-width="1.2" aria-hidden="true">
+    <rect x="20" y="20" width="160" height="260"/>
+    <rect x="40" y="20" width="120" height="260"/>
+    <line x1="40" y1="90" x2="160" y2="90"/>
+    <line x1="40" y1="210" x2="160" y2="210"/>
+    <line x1="100" y1="90" x2="100" y2="210"/>
+    <line x1="20" y1="150" x2="180" y2="150" stroke-width="2"/>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <span class="eyebrow hero-eyebrow reveal">Centro Tennis Linate — Milano</span>
+    <h1>
+      <span class="script reveal d1">Italian</span>
+      <span class="line2 reveal d2"><span class="underline">tennis</span> experience</span>
+    </h1>
+    <p class="lead reveal d3">Quattro campi outdoor in terra rossa, a due passi dalla città. Un luogo riservato dove il gioco torna a essere un rito, non un appuntamento qualunque.</p>
+    <div class="hero-cta reveal d3">
+      <a href="https://playtomic.io/tenant/24a04f0e-7926-44e9-9a2d-16b7f7175172?utm_source=app_ios&utm_campaign=share" target="_blank" rel="noopener" class="btn btn-primary"><span>Prenota ora</span></a>
+      <a href="#servizi" class="btn btn-ghost">Scopri l'esperienza</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true"><span class="dot"></span>Scorri</div>
+</section>
+
+<!-- ================= SERVIZI ================= -->
+<section id="servizi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Servizi</span>
+      <h2>Il gioco, <em>su misura</em></h2>
+      <p>Dal campo prenotato per una partita tra amici al percorso curato con il maestro. Ogni formato pensato per chi cerca qualità, discrezione e continuità.</p>
+    </div>
+
+    <div class="services">
+      <article class="service reveal">
+        <span class="num">i</span>
+        <h3>Affitto campo</h3>
+        <p>Prenota uno dei quattro campi in terra rossa, all'ora che preferisci. Disponibilità in tempo reale e pagamento direttamente da Playtomic.</p>
+        <a href="https://playtomic.io/tenant/24a04f0e-7926-44e9-9a2d-16b7f7175172?utm_source=app_ios&utm_campaign=share" target="_blank" rel="noopener" class="svc-cta">Prenota ora <span class="arrow">&rarr;</span></a>
+      </article>
+
+      <article class="service reveal d1">
+        <span class="num">ii</span>
+        <h3>Lezioni, corsi e pacchetti</h3>
+        <p>Percorsi individuali o di gruppo per ogni livello, con maestri certificati. Pacchetti su misura per costruire il tuo gioco con costanza.</p>
+        <a href="#contatti" class="svc-cta">Richiedi informazioni <span class="arrow">&rarr;</span></a>
+      </article>
+
+      <article class="service reveal d2">
+        <span class="num">iii</span>
+        <h3>Clinic di tennis</h3>
+        <p>Sessioni intensive dedicate a tecnica, tattica e ritmo di gioco. Momenti esclusivi per affinare ogni dettaglio, dentro e fuori dal campo.</p>
+        <a href="#contatti" class="svc-cta">Scopri le clinic <span class="arrow">&rarr;</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IL CENTRO ================= -->
+<section id="centro">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Il Centro</span>
+      <h2>Quattro campi <em>in terra rossa</em></h2>
+      <p>La terra battuta è una scelta, non un dettaglio. Cura del fondo, ritmo del gioco e un'atmosfera che a Milano è ormai rara da trovare.</p>
+    </div>
+
+    <div class="centro-grid">
+      <div class="centro-figure reveal">
+        <!-- Per inserire una tua foto: aggiungi style="background-image:url('campo.jpg');background-size:cover" su questo div -->
+        <svg class="court-svg" viewBox="0 0 200 300" fill="none" stroke="#fefff1" stroke-width="1.4" aria-hidden="true">
+          <rect x="20" y="20" width="160" height="260"/>
+          <rect x="40" y="20" width="120" height="260"/>
+          <line x1="40" y1="90" x2="160" y2="90"/>
+          <line x1="40" y1="210" x2="160" y2="210"/>
+          <line x1="100" y1="90" x2="100" y2="210"/>
+          <line x1="20" y1="150" x2="180" y2="150" stroke-width="2.4"/>
+        </svg>
+        <span class="badge">Outdoor · Terra rossa</span>
+      </div>
+
+      <ul class="centro-stats reveal d1">
+        <li><span class="figure">04</span><span class="label"><strong>Campi outdoor</strong>Tutti in terra rossa, curati ogni giorno.</span></li>
+        <li><span class="figure">07</span><span class="label"><strong>Giorni su sette</strong>Aperti tutta la settimana, dal mattino alla sera.</span></li>
+        <li><span class="figure">∞</span><span class="label"><strong>Esperienza autentica</strong>Lezioni, clinic e gioco libero in un ambiente riservato.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATTI ================= -->
+<section id="contatti">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Contatti</span>
+        <h2 style="font-family:var(--serif);font-weight:500;color:var(--ink);font-size:clamp(32px,4.4vw,54px);line-height:1.05;margin-top:24px;">Vieni a <em style="font-family:var(--script);font-style:normal;color:var(--clay);font-weight:400;">conoscerci</em></h2>
+        <dl>
+          <div class="row"><dt>Telefono</dt><dd><a href="tel:+393533423781">+39 353 342 3781</a></dd></div>
+          <div class="row"><dt>Email</dt><dd><a href="mailto:centrotennislinate@gmail.com">centrotennislinate@gmail.com</a></dd></div>
+          <div class="row"><dt>Instagram</dt><dd><a href="https://www.instagram.com/centrotennis.linate/" target="_blank" rel="noopener">@centrotennis.linate</a></dd></div>
+        </dl>
+      </div>
+
+      <div class="reveal d1">
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <input type="text" id="nome" name="nome" placeholder=" " required>
+            <label for="nome">Nome e cognome</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" name="email" placeholder=" " required>
+            <label for="email">Email</label>
+          </div>
+          <div class="field">
+            <input type="tel" id="tel" name="tel" placeholder=" ">
+            <label for="tel">Telefono</label>
+          </div>
+          <div class="field">
+            <textarea id="msg" name="msg" placeholder=" " required></textarea>
+            <label for="msg">Come possiamo aiutarti?</label>
+          </div>
+          <button type="submit" class="btn btn-primary"><span>Invia richiesta</span></button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand"><span class="script">Italian tennis experience</span>Centro Tennis Linate</div>
+      <div class="foot-contacts">
+        <a href="tel:+393533423781">+39 353 342 3781</a>
+        <a href="mailto:centrotennislinate@gmail.com">centrotennislinate@gmail.com</a>
+        <a href="https://www.instagram.com/centrotennis.linate/" target="_blank" rel="noopener">@centrotennis.linate</a>
+        <a href="https://playtomic.io/tenant/24a04f0e-7926-44e9-9a2d-16b7f7175172?utm_source=app_ios&utm_campaign=share" target="_blank" rel="noopener">Prenota su Playtomic</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Centro Tennis Linate · centrotennislinate.it</span>
+      <span>Milano · Italia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // anno dinamico
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // nav scrolled
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  // menu mobile
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  const toggleMenu = (open) => {
+    menu.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+  };
+  burger.addEventListener('click', () => toggleMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.14, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // form (demo: mostra conferma, predispone invio email)
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const nome = form.nome.value.trim();
+    const email = form.email.value.trim();
+    const msg = form.msg.value.trim();
+    if(!nome || !email || !msg){ formMsg.textContent = 'Compila nome, email e messaggio per inviare la richiesta.'; return; }
+    const subject = encodeURIComponent('Richiesta dal sito — ' + nome);
+    const body = encodeURIComponent(msg + '\n\n' + nome + (form.tel.value ? ' · ' + form.tel.value : '') + '\n' + email);
+    window.location.href = 'mailto:centrotennislinate@gmail.com?subject=' + subject + '&body=' + body;
+    formMsg.textContent = 'Grazie. Si aprirà la tua app di posta per completare l\'invio.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
