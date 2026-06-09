@@ -146,10 +146,15 @@
   .hero{
     position:relative; min-height:100svh; display:flex; align-items:center;
     padding-top:120px; padding-bottom:60px;
-    background:
-      radial-gradient(120% 90% at 78% 10%, rgba(128,0,0,.10), transparent 55%),
-      var(--cream);
     overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background-image:url('foto 1.jpg'); background-size:cover; background-position:center 30%;
+  }
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(to right, rgba(254,255,241,.97) 45%, rgba(254,255,241,.6) 75%, rgba(254,255,241,.2) 100%);
   }
   /* sottili linee di campo da tennis come motivo firma */
   .court-lines{
@@ -249,8 +254,8 @@
     border:1px solid rgba(254,255,241,.18);
     display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  /* sostituisci lo sfondo qui sotto con una tua foto: background-image:url('foto-campo.jpg'); */
-  .centro-figure .court-svg{ width:64%; opacity:.5; }
+  .centro-figure .court-svg{ display:none; }
+  .centro-figure{ background-image:url('foto 2.avif'); background-size:cover; background-position:center; }
   .centro-figure .badge{
     position:absolute; bottom:0; left:0; background:var(--cream); color:var(--clay);
     padding:14px 22px; font-family:var(--serif); font-style:italic; font-size:18px;
@@ -368,6 +373,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
   <!-- motivo: linee di campo -->
   <svg class="court-lines" viewBox="0 0 200 300" fill="none" stroke="#800000" stroke-width="1.2" aria-hidden="true">
     <rect x="20" y="20" width="160" height="260"/>
@@ -414,7 +420,7 @@
       <article class="service reveal d1">
         <span class="num">ii</span>
         <h3>Lezioni, corsi e pacchetti</h3>
-        <p>Percorsi individuali o di gruppo per ogni livello, con maestri certificati. Pacchetti su misura per costruire il tuo gioco con costanza.</p>
+        <p>Percorsi individuali o di gruppo per ogni livello, con maestri certificati FITP. Pacchetti su misura per costruire il tuo gioco con costanza.</p>
         <a href="#contatti" class="svc-cta">Richiedi informazioni <span class="arrow">&rarr;</span></a>
       </article>
 
@@ -427,6 +433,12 @@
     </div>
   </div>
 </section>
+
+<!-- ================= GALLERY STRIP ================= -->
+<div style="display:grid;grid-template-columns:1fr 1fr;height:clamp(220px,30vw,420px);overflow:hidden;">
+  <div style="background-image:url('foto 3.jpg');background-size:cover;background-position:center;"></div>
+  <div style="background-image:url('foto 1.jpg');background-size:cover;background-position:center 40%;"></div>
+</div>
 
 <!-- ================= IL CENTRO ================= -->
 <section id="centro">
@@ -471,6 +483,7 @@
           <div class="row"><dt>Telefono</dt><dd><a href="tel:+393533423781">+39 353 342 3781</a></dd></div>
           <div class="row"><dt>Email</dt><dd><a href="mailto:centrotennislinate@gmail.com">centrotennislinate@gmail.com</a></dd></div>
           <div class="row"><dt>Instagram</dt><dd><a href="https://www.instagram.com/centrotennis.linate/" target="_blank" rel="noopener">@centrotennis.linate</a></dd></div>
+          <div class="row"><dt>Dove siamo</dt><dd><a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x4786c8a6eb9182e9:0x9320f5f187f30000?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noopener">Centro Log. e Sportivo Aeronautica Militare<br>Viale Enrico Forlanini<br>20054 Novegro-Tregarezzo (MI)</a></dd></div>
         </dl>
       </div>
 
@@ -510,6 +523,7 @@
         <a href="mailto:centrotennislinate@gmail.com">centrotennislinate@gmail.com</a>
         <a href="https://www.instagram.com/centrotennis.linate/" target="_blank" rel="noopener">@centrotennis.linate</a>
         <a href="https://playtomic.io/tenant/24a04f0e-7926-44e9-9a2d-16b7f7175172?utm_source=app_ios&utm_campaign=share" target="_blank" rel="noopener">Prenota su Playtomic</a>
+        <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x4786c8a6eb9182e9:0x9320f5f187f30000?sa=X&ved=1t:8290&ictx=111" target="_blank" rel="noopener">Viale Enrico Forlanini, Novegro-Tregarezzo (MI)</a>
       </div>
     </div>
     <div class="foot-bottom">
